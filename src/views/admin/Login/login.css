@@ -1,0 +1,19 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login::before {
+  content: "";
+  background-image: url("../../../assets/images/svg/footer.svg");
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  bottom: 0;
+  background-size: cover;
+  z-index: 0;
+}

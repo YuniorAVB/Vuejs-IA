@@ -1,0 +1,33 @@
+.formBot {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.formBot__header {
+  background-color: #1982f7;
+  padding: 30px 20px;
+  color: #fff;
+}
+
+.formBot__header__title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.formBot__header__text {
+  font-size: 15px;
+  padding: 10px 0;
+}
+
+.formBot__form {
+  padding: 20px;
+}
+
+.formBot__form__button {
+  width: 100%;
+}
