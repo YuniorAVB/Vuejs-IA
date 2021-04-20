@@ -14,6 +14,11 @@ const routes = [
         name: "Home",
         component: () => import("../views/user/Home"),
       },
+      {
+        path: "tracking/:id",
+        name: "Tracking",
+        component: () => import("../views/user/Tracking"),
+      },
     ],
   },
   {
@@ -30,6 +35,11 @@ const routes = [
         path: "postulant",
         name: "Postulant",
         component: () => import("../views/admin/Postulante"),
+      },
+      {
+        path: "stall",
+        name: "Stall",
+        component: () => import("../views/admin/Stall"),
       },
     ],
   },

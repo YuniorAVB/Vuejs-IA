@@ -42,7 +42,7 @@ export default {
   name: "Login",
   methods: {
     submitLogin() {
-      console.log("object");
+      this.$router.push("/dashboard");
     },
   },
 };

@@ -1,0 +1,23 @@
+.stall {
+  padding: 10px 20px;
+}
+
+.stall__title {
+}
+
+.stall__controls {
+}
+
+.stall__controls__row {
+  padding: 20px;
+}
+
+.stall__controls__button {
+  position: relative;
+  right: 0;
+  margin-right: 10px;
+}
+
+.stall__options {
+  margin: 0 10px;
+}

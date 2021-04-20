@@ -1,0 +1,19 @@
+.tracking {
+  margin: 0 auto;
+}
+
+.tracking__image {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tracking__image img {
+  background-size: contain;
+  width: 100%;
+}
+
+.tracking__message {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 0;
+}

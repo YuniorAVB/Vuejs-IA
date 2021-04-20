@@ -7,6 +7,7 @@
 
           <v-spacer></v-spacer>
           <v-btn
+            icon
             color="primary"
             class="mx-1"
             v-for="(item, index) in links"
@@ -32,12 +33,8 @@ export default {
           path: "/",
         },
         {
-          label: "About",
-          path: "/about",
-        },
-        {
-          label: "Contacto",
-          path: "/contacto",
+          label: "Login",
+          path: "/login",
         },
       ],
       colorNavbar: "transparent",

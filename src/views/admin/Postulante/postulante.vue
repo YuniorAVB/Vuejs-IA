@@ -4,14 +4,27 @@
       <v-card-title>
         Postulantes
         <v-spacer></v-spacer>
-        <v-text-field
-          v-model="search"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-          style="max-width:300px"
-        ></v-text-field>
+        <v-row>
+          <v-col>
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+              style="max-width:300px"
+            />
+          </v-col>
+          <v-col>
+            <v-select
+              :items="options"
+              item-text="text"
+              item-value="id"
+              label="Puesto"
+              v-model="optionStall"
+            ></v-select>
+          </v-col>
+        </v-row>
       </v-card-title>
       <v-data-table
         :headers="headers"
@@ -25,13 +38,26 @@
             target="_blank"
             color="primary"
             small
-            :to="item.postulant_url_cv"
+            :href="`http://localhost:4000/cv/${item.postulant_url_cv}`"
           >
             Ver CV
           </v-btn>
         </template>
       </v-data-table>
     </v-card>
+
+    <v-dialog v-model="dialog" hide-overlay persistent width="300">
+      <v-card color="primary" dark>
+        <v-card-text>
+          Procesando ....
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          ></v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -49,7 +75,17 @@ export default {
       ],
       items: [],
       search: "",
+      options: [],
+      optionStall: "",
+      dialog: false,
     };
+  },
+  watch: {
+    optionStall(newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.getDataPostulantStall(newValue);
+      }
+    },
   },
   methods: {
     getDataPostulant() {
@@ -57,9 +93,23 @@ export default {
         this.items = res.data.data;
       });
     },
+    async getStalls() {
+      const res = await axios.get("/stall");
+
+      this.options = res.data.data.reduce((acc, item) => {
+        return [...acc, { text: item.stall_name, id: item.stall_id }];
+      }, []);
+    },
+    async getDataPostulantStall(idStall) {
+      this.dialog = true;
+      const result = await axios.get("/postulant/stall/" + idStall);
+      this.items = result.data.data;
+      this.dialog = false;
+    },
   },
   created() {
     this.getDataPostulant();
+    this.getStalls();
   },
 };
 </script>

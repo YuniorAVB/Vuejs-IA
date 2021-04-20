@@ -47,6 +47,11 @@ export default {
           icon: "mdi-account",
           path: "/dashboard/postulant",
         },
+        {
+          title: "Vacantes",
+          icon: "mdi-account",
+          path: "/dashboard/stall",
+        },
       ],
       mini: true,
     };

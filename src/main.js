@@ -1,12 +1,15 @@
 import Vue from "vue";
-import './plugins/axios'
+import "./plugins/axios";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
+import VueSweetalert2 from "vue-sweetalert2";
 
 import "animate.css";
+import "sweetalert2/dist/sweetalert2.min.css";
 
+Vue.use(VueSweetalert2);
 Vue.config.productionTip = false;
 
 new Vue({
