@@ -1,0 +1,46 @@
+.chatOptions {
+  margin: 10px 0;
+}
+.chatOptions__card {
+  border-radius: 7px;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  margin: 20px 0;
+}
+.chatOptions__card::after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(to right, #1982f7, #4bb6f2);
+  transform: translateX(-10px);
+}
+
+.chatOptions__card__title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #424242;
+}
+
+.chatOptions__card__subTitle {
+  display: block;
+}
+.chatOptions__card__body {
+  margin: 10px 0;
+}
+.chatOptions__card__body__skill {
+  background: linear-gradient(to right, #1982f7, #13a3eb);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  margin: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+}

@@ -2,14 +2,15 @@
   <div class="floatButton">
     <div class="floatButton__wrapper" v-show="showWrapper">
       <form-bot v-if="!showDialogBot" @formSuccess="showDialogBot = $event" />
-      <iframe
+      <!-- <iframe
         class="floatButton__chatBot"
         v-if="showDialogBot"
         allow="microphone;"
         width="100%"
         height="100%"
         src="https://console.dialogflow.com/api-client/demo/embedded/d6e57e2b-76f1-4726-a59e-cf08d8451677"
-      />
+      /> -->
+      <chat-bot v-if="showDialogBot"></chat-bot>
     </div>
 
     <v-btn :color="color" fab @click="showWrapper = !showWrapper">
@@ -19,10 +20,12 @@
 </template>
 <script>
 import FormBot from "../FormBot";
+import ChatBot from "../ChatBot";
 export default {
   name: "FloatButton",
   components: {
     FormBot,
+    ChatBot,
   },
   props: {
     icon: {
