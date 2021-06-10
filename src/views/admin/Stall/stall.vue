@@ -117,17 +117,21 @@
         :search="search"
       >
         <template v-slot:item.stall_id="{ item }">
-          <v-icon
-            class="stall__options"
-            color="green"
-            @click="editStallById(item.stall_id)"
-          >
-            fas fa-edit</v-icon
-          >
+          <v-btn icon fab x-small class="mr-2">
+            <v-icon
+              class="stall__options "
+              color="green"
+              @click="editStallById(item.stall_id)"
+            >
+              fas fa-edit</v-icon
+            >
+          </v-btn>
 
-          <v-icon color="error" @click="editStallById(item.stall_id)">
-            fas fa-trash</v-icon
-          >
+          <v-btn icon fab x-small>
+            <v-icon color="error" @click="editStallById(item.stall_id)">
+              fas fa-trash</v-icon
+            >
+          </v-btn>
         </template>
       </v-data-table>
     </v-card>

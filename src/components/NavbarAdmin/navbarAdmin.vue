@@ -27,7 +27,7 @@ export default {
   }),
   methods: {
     closeSession() {
-      console.log("Close Session");
+      this.$router.push("/");
     },
   },
 };

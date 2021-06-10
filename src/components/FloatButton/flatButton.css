@@ -3,6 +3,7 @@
   bottom: 0;
   right: 0;
   padding: 50px;
+  z-index: 700;
 }
 
 .floatButton__wrapper {

@@ -1,0 +1,23 @@
+.webCam {
+}
+
+.webCam__wrapper {
+}
+.webCam__wrapper__video {
+  margin: 30px;
+  width: 450px;
+  height: auto;
+  position: relative;
+}
+
+.isPlay {
+  top: 150px;
+  position: fixed;
+  z-index: 500;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  transition: all 200ms ease;
+}

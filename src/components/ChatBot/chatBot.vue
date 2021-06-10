@@ -6,6 +6,7 @@
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-avatar>
         Asistente Virtual
+        <button @click="$refs.webcam.stopWebcam()">stop</button>
       </div>
     </div>
 
@@ -22,7 +23,8 @@
         <div v-show="loading" class="chatBot__wrapper__loading">
           <chat-bubble />
         </div>
-        <loading v-show="loadingUpload" />
+
+        <loading-circle v-show="loadingUpload" />
       </div>
       <div class="chatBot__wrapper__form">
         <v-form @submit.prevent="sumitForm">
@@ -40,6 +42,8 @@
         </v-form>
       </div>
     </div>
+
+    <web-cam @submitVideo="getUrlVideo" ref="webcam" />
   </div>
 </template>
 <script>
@@ -49,7 +53,8 @@ import MessageChatBot from "../MessageChatBot";
 import ChatBubble from "../ChatTyping";
 import ChatStall from "../ChatStall";
 import ChatWelcome from "../ChatWelcome";
-import Loading from "../Loading";
+import LoadingCircle from "../Loading";
+import WebCam from "../WebCam";
 import ImgFileUpload from "../../assets/images/png/file-upload2.png";
 import { v4 as uuidv4 } from "uuid";
 export default {
@@ -57,7 +62,8 @@ export default {
   components: {
     ChatBubble,
     ChatWelcome,
-    Loading,
+    LoadingCircle,
+    WebCam,
   },
   data() {
     return {
@@ -105,6 +111,9 @@ export default {
         if (error instanceof SyntaxError) {
           if (jsonMessage == "file") {
             this.buildFileInput();
+          } else if (jsonMessage == "Su DNI, por favor") {
+            this.$refs.webcam.playWebcam();
+            this.buildMessageBot(jsonMessage);
           } else {
             this.buildMessageBot(jsonMessage);
           }
@@ -131,12 +140,21 @@ export default {
       this.loadingUpload = true;
       formData.append("file", file);
       const { data } = await axios.post("/upload/cv", formData);
-      const result = await axios.post("/test", {
+      await axios.post("/test", {
         userQuery: data.name,
         userId: this.userId,
       });
-      this.loadingUpload = false;
+
+      this.$refs.webcam.stopWebcam();
+    },
+    async getUrlVideo(urlVideo) {
+      const result = await axios.post("/test", {
+        userQuery: urlVideo,
+        userId: this.userId,
+      });
+
       this.parseMessage(result.data.data[0].queryResult.fulfillmentText);
+      this.loadingUpload = false;
     },
     buildFileInput() {
       this.listComponentsMessage.push({

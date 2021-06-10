@@ -49,7 +49,7 @@ export default {
         },
         {
           title: "Vacantes",
-          icon: "mdi-account",
+          icon: "fas fa-clipboard-list",
           path: "/dashboard/stall",
         },
       ],

@@ -36,11 +36,23 @@
         <template v-slot:item.postulant_url_cv="{ item }">
           <v-btn
             target="_blank"
-            color="primary"
-            small
+            color="orange"
+            class="mr-2"
+            x-small
             :href="`http://localhost:4000/cv/${item.postulant_url_cv}`"
+            fab
           >
-            Ver CV
+            <v-icon color="white" size="small"> fas fa-file-alt</v-icon>
+          </v-btn>
+
+          <v-btn
+            target="_blank"
+            color="primary"
+            x-small
+            fab
+            :href="`http://localhost:4000/video/${item.postulant_url_video}`"
+          >
+            <v-icon color="white" size="small"> fas fa-video</v-icon>
           </v-btn>
         </template>
       </v-data-table>
